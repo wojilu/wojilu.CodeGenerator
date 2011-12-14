@@ -1,0 +1,42 @@
+﻿
+<div>
+    <div class="adminMainTitle"><div class="adminSidebarTitleInternal">修改用户</div></div>
+
+    <div class="adminMainPanel">
+        <div class="formPanel">
+        <form method="post" action="#{ActionLink}" class="ajaxPostForm">
+	        <table style="width:100%;">
+                
+		        <tr>
+			        <td style="vertical-align:top;">Name</td>
+			        <td><input type="text" name="user.Name" value="#{user.Name}" style="width:250px;" /></td>
+		        </tr>
+                
+		        <tr>
+			        <td style="vertical-align:top;">Pwd</td>
+			        <td><input type="text" name="user.Pwd" value="#{user.Pwd}" style="width:250px;" /></td>
+		        </tr>
+                
+		        <tr>
+			        <td style="vertical-align:top;">Gender</td>
+			        <td><input type="text" name="user.Gender" value="#{user.Gender}" style="width:60px;" /></td>
+		        </tr>
+                
+		        <tr>
+			        <td style="vertical-align:top;">Description</td>
+			        <td><input type="text" name="user.Description" value="#{user.Description}" style="width:250px;" /></td>
+		        </tr>
+                
+		        <tr>
+			        <td style="vertical-align:top;">Created</td>
+			        <td><input type="text" name="user.Created" value="#{user.Created}" style="width:250px;" /></td>
+		        </tr>
+                
+		        <tr>
+			        <td>&nbsp;</td><td><input type="submit" class="btn" value="修改数据" /> <input type="button" class="btnReturn" value="返回" /></td>
+		        </tr>
+	        </table>
+        </form>
+        </div>
+    </div>
+</div>

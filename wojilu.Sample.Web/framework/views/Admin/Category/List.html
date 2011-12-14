@@ -1,0 +1,35 @@
+﻿
+<div>
+    <div class="adminMainTitle"><div class="adminSidebarTitleInternal">数据列表</div></div>
+
+    <div class="adminMainPanel">
+
+<table cellspacing="1" cellpadding="3"  class="dataAdminList" id="dataAdminList">
+    <tr class="adminBar"><td colspan="5"><div><a href="#{addLink}"><img src="~img/add.gif"/> 添加文章分类</a></div></td></tr>
+	<tr class="tableHeader">
+        <th>编号</th>
+        
+		<th>Name</th>
+		<th>Description</th>
+		<th>Created</th>
+		<th>管理</th>
+	</tr>
+    <!-- BEGIN list -->
+	<tr class="tableItems">
+        <td>#{d.Id}&nbsp;</td>
+        
+        <td>#{d.Name}&nbsp;</td>
+        <td>#{d.Description}&nbsp;</td>
+        <td>#{d.Created}&nbsp;</td>
+		<td>
+            <a href="#{d.LinkEdit}" class="edit">修改</a>
+            <a href="#{d.LinkDelete}" class="deleteCmd delete">删除</a>
+        </td>
+	</tr>
+    <!-- END list -->
+</table>
+<div>
+	#{page}
+</div>
+</div>
+</div>

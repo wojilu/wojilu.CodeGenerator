@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wojilu.CodeGenerator", "wojilu.CodeGenerator\wojilu.CodeGenerator.csproj", "{B5D9C928-D75A-45B6-991A-1E61DEC15F42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wojilu.Sample.Web", "wojilu.Sample.Web\wojilu.Sample.Web.csproj", "{0BCFDB45-06D0-4513-BC8E-1B12B56F1BB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wojilu.Sample", "wojilu.Sample\wojilu.Sample.csproj", "{741C8E37-4645-4091-B242-26A24932ECCA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B5D9C928-D75A-45B6-991A-1E61DEC15F42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5D9C928-D75A-45B6-991A-1E61DEC15F42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5D9C928-D75A-45B6-991A-1E61DEC15F42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5D9C928-D75A-45B6-991A-1E61DEC15F42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BCFDB45-06D0-4513-BC8E-1B12B56F1BB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BCFDB45-06D0-4513-BC8E-1B12B56F1BB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BCFDB45-06D0-4513-BC8E-1B12B56F1BB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BCFDB45-06D0-4513-BC8E-1B12B56F1BB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{741C8E37-4645-4091-B242-26A24932ECCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{741C8E37-4645-4091-B242-26A24932ECCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{741C8E37-4645-4091-B242-26A24932ECCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{741C8E37-4645-4091-B242-26A24932ECCA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

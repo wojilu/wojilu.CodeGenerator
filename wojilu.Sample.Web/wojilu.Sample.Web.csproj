@@ -1,0 +1,367 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0BCFDB45-06D0-4513-BC8E-1B12B56F1BB9}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>wojilu.Sample.Web</RootNamespace>
+    <AssemblyName>wojilu.Sample.Web</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Default.aspx" />
+    <Content Include="framework\config\log.config" />
+    <Content Include="framework\config\mvc.config" />
+    <Content Include="framework\config\orm.config" />
+    <Content Include="framework\config\route.config" />
+    <Content Include="framework\config\site.config" />
+    <Content Include="framework\lang\zh-cn\core.config" />
+    <Content Include="framework\views\Admin\Article\Add.html" />
+    <Content Include="framework\views\Admin\Article\Edit.html" />
+    <Content Include="framework\views\Admin\Article\List.html" />
+    <Content Include="framework\views\Admin\Category\Add.html" />
+    <Content Include="framework\views\Admin\Category\Edit.html" />
+    <Content Include="framework\views\Admin\Category\List.html" />
+    <Content Include="framework\views\Admin\Layout\Layout.html" />
+    <Content Include="framework\views\Admin\User\Add.html" />
+    <Content Include="framework\views\Admin\User\Edit.html" />
+    <Content Include="framework\views\Admin\User\List.html" />
+    <Content Include="framework\views\Main\Index.html" />
+    <Content Include="Global.asax" />
+    <Content Include="static\css\wojilu.common.admin.css" />
+    <Content Include="static\css\wojilu.common.css" />
+    <Content Include="static\css\wojilu.site.admin.css" />
+    <Content Include="static\js\colorpicker\css\colorpicker.css" />
+    <Content Include="static\js\colorpicker\images\blank.gif" />
+    <Content Include="static\js\colorpicker\images\colorpicker_background.png" />
+    <Content Include="static\js\colorpicker\images\colorpicker_hex.png" />
+    <Content Include="static\js\colorpicker\images\colorpicker_hsb_b.png" />
+    <Content Include="static\js\colorpicker\images\colorpicker_hsb_h.png" />
+    <Content Include="static\js\colorpicker\images\colorpicker_hsb_s.png" />
+    <Content Include="static\js\colorpicker\images\colorpicker_indic.gif" />
+    <Content Include="static\js\colorpicker\images\colorpicker_overlay.png" />
+    <Content Include="static\js\colorpicker\images\colorpicker_rgb_b.png" />
+    <Content Include="static\js\colorpicker\images\colorpicker_rgb_g.png" />
+    <Content Include="static\js\colorpicker\images\colorpicker_rgb_r.png" />
+    <Content Include="static\js\colorpicker\images\colorpicker_select.gif" />
+    <Content Include="static\js\colorpicker\images\colorpicker_submit.png" />
+    <Content Include="static\js\colorpicker\images\custom_background.png" />
+    <Content Include="static\js\colorpicker\images\custom_hex.png" />
+    <Content Include="static\js\colorpicker\images\custom_hsb_b.png" />
+    <Content Include="static\js\colorpicker\images\custom_hsb_h.png" />
+    <Content Include="static\js\colorpicker\images\custom_hsb_s.png" />
+    <Content Include="static\js\colorpicker\images\custom_indic.gif" />
+    <Content Include="static\js\colorpicker\images\custom_rgb_b.png" />
+    <Content Include="static\js\colorpicker\images\custom_rgb_g.png" />
+    <Content Include="static\js\colorpicker\images\custom_rgb_r.png" />
+    <Content Include="static\js\colorpicker\images\custom_submit.png" />
+    <Content Include="static\js\colorpicker\images\select.png" />
+    <Content Include="static\js\colorpicker\images\select2.png" />
+    <Content Include="static\js\colorpicker\images\slider.png" />
+    <Content Include="static\js\colorpicker\js\colorpicker.js" />
+    <Content Include="static\js\colorpicker\url.txt" />
+    <Content Include="static\js\editor\editor.js" />
+    <Content Include="static\js\editor\skin\em\001.gif" />
+    <Content Include="static\js\editor\skin\em\002.gif" />
+    <Content Include="static\js\editor\skin\em\003.gif" />
+    <Content Include="static\js\editor\skin\em\004.gif" />
+    <Content Include="static\js\editor\skin\em\005.gif" />
+    <Content Include="static\js\editor\skin\em\006.gif" />
+    <Content Include="static\js\editor\skin\em\007.gif" />
+    <Content Include="static\js\editor\skin\em\008.gif" />
+    <Content Include="static\js\editor\skin\em\009.gif" />
+    <Content Include="static\js\editor\skin\em\010.gif" />
+    <Content Include="static\js\editor\skin\em\011.gif" />
+    <Content Include="static\js\editor\skin\em\012.gif" />
+    <Content Include="static\js\editor\skin\em\013.gif" />
+    <Content Include="static\js\editor\skin\em\014.gif" />
+    <Content Include="static\js\editor\skin\em\015.gif" />
+    <Content Include="static\js\editor\skin\em\016.gif" />
+    <Content Include="static\js\editor\skin\em\017.gif" />
+    <Content Include="static\js\editor\skin\em\018.gif" />
+    <Content Include="static\js\editor\skin\em\019.gif" />
+    <Content Include="static\js\editor\skin\em\020.gif" />
+    <Content Include="static\js\editor\skin\em\021.gif" />
+    <Content Include="static\js\editor\skin\em\0211.gif" />
+    <Content Include="static\js\editor\skin\em\022.gif" />
+    <Content Include="static\js\editor\skin\em\023.gif" />
+    <Content Include="static\js\editor\skin\em\024.gif" />
+    <Content Include="static\js\editor\skin\em\025.gif" />
+    <Content Include="static\js\editor\skin\em\026.gif" />
+    <Content Include="static\js\editor\skin\em\027.gif" />
+    <Content Include="static\js\editor\skin\em\028.gif" />
+    <Content Include="static\js\editor\skin\em\029.gif" />
+    <Content Include="static\js\editor\skin\em\030.gif" />
+    <Content Include="static\js\editor\skin\em\031.gif" />
+    <Content Include="static\js\editor\skin\em\032.gif" />
+    <Content Include="static\js\editor\skin\em\033.gif" />
+    <Content Include="static\js\editor\skin\em\034.gif" />
+    <Content Include="static\js\editor\skin\em\035.gif" />
+    <Content Include="static\js\editor\skin\em\036.gif" />
+    <Content Include="static\js\editor\skin\em\037.gif" />
+    <Content Include="static\js\editor\skin\em\038.gif" />
+    <Content Include="static\js\editor\skin\em\039.gif" />
+    <Content Include="static\js\editor\skin\em\040.gif" />
+    <Content Include="static\js\editor\skin\em\041.gif" />
+    <Content Include="static\js\editor\skin\em\042.gif" />
+    <Content Include="static\js\editor\skin\em\043.gif" />
+    <Content Include="static\js\editor\skin\em\044.gif" />
+    <Content Include="static\js\editor\skin\em\045.gif" />
+    <Content Include="static\js\editor\skin\em\046.gif" />
+    <Content Include="static\js\editor\skin\em\047.gif" />
+    <Content Include="static\js\editor\skin\em\048.gif" />
+    <Content Include="static\js\editor\skin\em\049.gif" />
+    <Content Include="static\js\editor\skin\em\050.gif" />
+    <Content Include="static\js\editor\skin\em\051.gif" />
+    <Content Include="static\js\editor\skin\em\052.gif" />
+    <Content Include="static\js\editor\skin\em\053.gif" />
+    <Content Include="static\js\editor\skin\em\054.gif" />
+    <Content Include="static\js\editor\skin\em\055.gif" />
+    <Content Include="static\js\editor\skin\em\056.gif" />
+    <Content Include="static\js\editor\skin\em\057.gif" />
+    <Content Include="static\js\editor\skin\em\058.gif" />
+    <Content Include="static\js\editor\skin\em\059.gif" />
+    <Content Include="static\js\editor\skin\em\060.gif" />
+    <Content Include="static\js\editor\skin\em\061.gif" />
+    <Content Include="static\js\editor\skin\em\062.gif" />
+    <Content Include="static\js\editor\skin\em\063.gif" />
+    <Content Include="static\js\editor\skin\em\064.gif" />
+    <Content Include="static\js\editor\skin\em\065.gif" />
+    <Content Include="static\js\editor\skin\em\066.gif" />
+    <Content Include="static\js\editor\skin\em\067.gif" />
+    <Content Include="static\js\editor\skin\em\068.gif" />
+    <Content Include="static\js\editor\skin\em\069.gif" />
+    <Content Include="static\js\editor\skin\em\1120.gif" />
+    <Content Include="static\js\editor\skin\em\117.gif" />
+    <Content Include="static\js\editor\skin\em\261.gif" />
+    <Content Include="static\js\editor\skin\em\close.gif" />
+    <Content Include="static\js\editor\skin\em\shocked.gif" />
+    <Content Include="static\js\editor\skin\em\smile.gif" />
+    <Content Include="static\js\editor\skin\em\tongue.gif" />
+    <Content Include="static\js\editor\skin\em\z035.gif" />
+    <Content Include="static\js\editor\skin\style.css" />
+    <Content Include="static\js\editor\skin\toolbar\about.gif" />
+    <Content Include="static\js\editor\skin\toolbar\addCode.gif" />
+    <Content Include="static\js\editor\skin\toolbar\align.gif" />
+    <Content Include="static\js\editor\skin\toolbar\align1.gif" />
+    <Content Include="static\js\editor\skin\toolbar\backcolor.gif" />
+    <Content Include="static\js\editor\skin\toolbar\bg.gif" />
+    <Content Include="static\js\editor\skin\toolbar\bold.gif" />
+    <Content Include="static\js\editor\skin\toolbar\copy.gif" />
+    <Content Include="static\js\editor\skin\toolbar\createlink.gif" />
+    <Content Include="static\js\editor\skin\toolbar\cut.gif" />
+    <Content Include="static\js\editor\skin\toolbar\date.gif" />
+    <Content Include="static\js\editor\skin\toolbar\delete.gif" />
+    <Content Include="static\js\editor\skin\toolbar\dent.gif" />
+    <Content Include="static\js\editor\skin\toolbar\down.gif" />
+    <Content Include="static\js\editor\skin\toolbar\em.gif" />
+    <Content Include="static\js\editor\skin\toolbar\emotion.gif" />
+    <Content Include="static\js\editor\skin\toolbar\flash.gif" />
+    <Content Include="static\js\editor\skin\toolbar\fontFamily.gif" />
+    <Content Include="static\js\editor\skin\toolbar\fontsize.gif" />
+    <Content Include="static\js\editor\skin\toolbar\forecolor.gif" />
+    <Content Include="static\js\editor\skin\toolbar\help.gif" />
+    <Content Include="static\js\editor\skin\toolbar\hr.gif" />
+    <Content Include="static\js\editor\skin\toolbar\indent.gif" />
+    <Content Include="static\js\editor\skin\toolbar\inserthorizontalrule.gif" />
+    <Content Include="static\js\editor\skin\toolbar\insertorderedlist.gif" />
+    <Content Include="static\js\editor\skin\toolbar\insertunorderedlist.gif" />
+    <Content Include="static\js\editor\skin\toolbar\italic.gif" />
+    <Content Include="static\js\editor\skin\toolbar\justifycenter.gif" />
+    <Content Include="static\js\editor\skin\toolbar\justifyfull.gif" />
+    <Content Include="static\js\editor\skin\toolbar\justifyleft.gif" />
+    <Content Include="static\js\editor\skin\toolbar\justifyright.gif" />
+    <Content Include="static\js\editor\skin\toolbar\layer.gif" />
+    <Content Include="static\js\editor\skin\toolbar\link.gif" />
+    <Content Include="static\js\editor\skin\toolbar\list.gif" />
+    <Content Include="static\js\editor\skin\toolbar\media.gif" />
+    <Content Include="static\js\editor\skin\toolbar\numberedlist.gif" />
+    <Content Include="static\js\editor\skin\toolbar\outdent.gif" />
+    <Content Include="static\js\editor\skin\toolbar\paste.gif" />
+    <Content Include="static\js\editor\skin\toolbar\pic.gif" />
+    <Content Include="static\js\editor\skin\toolbar\preview.gif" />
+    <Content Include="static\js\editor\skin\toolbar\print.gif" />
+    <Content Include="static\js\editor\skin\toolbar\real.gif" />
+    <Content Include="static\js\editor\skin\toolbar\redo.gif" />
+    <Content Include="static\js\editor\skin\toolbar\removeformat.gif" />
+    <Content Include="static\js\editor\skin\toolbar\replace.gif" />
+    <Content Include="static\js\editor\skin\toolbar\right.gif" />
+    <Content Include="static\js\editor\skin\toolbar\right2.gif" />
+    <Content Include="static\js\editor\skin\toolbar\selectall.gif" />
+    <Content Include="static\js\editor\skin\toolbar\separator.gif" />
+    <Content Include="static\js\editor\skin\toolbar\source.gif" />
+    <Content Include="static\js\editor\skin\toolbar\strikethrough.gif" />
+    <Content Include="static\js\editor\skin\toolbar\subscript.gif" />
+    <Content Include="static\js\editor\skin\toolbar\superscript.gif" />
+    <Content Include="static\js\editor\skin\toolbar\symbol.gif" />
+    <Content Include="static\js\editor\skin\toolbar\table.gif" />
+    <Content Include="static\js\editor\skin\toolbar\time.gif" />
+    <Content Include="static\js\editor\skin\toolbar\title.gif" />
+    <Content Include="static\js\editor\skin\toolbar\toolbar.start.gif" />
+    <Content Include="static\js\editor\skin\toolbar\underline.gif" />
+    <Content Include="static\js\editor\skin\toolbar\undo.gif" />
+    <Content Include="static\js\editor\skin\toolbar\unlink.gif" />
+    <Content Include="static\js\editor\skin\toolbar\unorderedlist.gif" />
+    <Content Include="static\js\jquery.js" />
+    <Content Include="static\js\lang.zh-cn.js" />
+    <Content Include="static\js\uploadify\browse.gif" />
+    <Content Include="static\js\uploadify\browser.gif" />
+    <Content Include="static\js\uploadify\browser2.gif" />
+    <Content Include="static\js\uploadify\browser_s.gif" />
+    <Content Include="static\js\uploadify\browse_s.gif" />
+    <Content Include="static\js\uploadify\cancel.png" />
+    <Content Include="static\js\uploadify\expressInstall.swf" />
+    <Content Include="static\js\uploadify\jquery-1.4.2.min.js" />
+    <Content Include="static\js\uploadify\jquery.uploadify.v2.1.4.js" />
+    <Content Include="static\js\uploadify\jquery.uploadify.v2.1.4.min.js" />
+    <Content Include="static\js\uploadify\swfobject.js" />
+    <Content Include="static\js\uploadify\uploadify.allglyphs.swf" />
+    <Content Include="static\js\uploadify\uploadify.css" />
+    <Content Include="static\js\uploadify\uploadify.swf" />
+    <Content Include="static\js\wojilu.common.admin.js" />
+    <Content Include="static\js\wojilu.common.js" />
+    <Content Include="static\js\wojilu.frame.js" />
+    <Content Include="static\js\wojilu.nolayout.js" />
+    <Content Include="static\js\wojilu.ui.slider.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="framework\views\error.html" />
+    <Content Include="framework\views\forward.html" />
+    <Content Include="framework\views\msg.html" />
+    <Content Include="framework\views\msgbox.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="static\js\uploadify\check.php" />
+    <None Include="static\js\uploadify\com\adobe\air\logging\FileTarget.as" />
+    <None Include="static\js\uploadify\com\adobe\crypto\HMAC.as" />
+    <None Include="static\js\uploadify\com\adobe\crypto\MD5.as" />
+    <None Include="static\js\uploadify\com\adobe\crypto\MD5Stream.as" />
+    <None Include="static\js\uploadify\com\adobe\crypto\SHA1.as" />
+    <None Include="static\js\uploadify\com\adobe\crypto\SHA224.as" />
+    <None Include="static\js\uploadify\com\adobe\crypto\SHA256.as" />
+    <None Include="static\js\uploadify\com\adobe\crypto\WSSEUsernameToken.as" />
+    <None Include="static\js\uploadify\com\adobe\errors\IllegalStateError.as" />
+    <None Include="static\js\uploadify\com\adobe\fileformats\vcard\Address.as" />
+    <None Include="static\js\uploadify\com\adobe\fileformats\vcard\Email.as" />
+    <None Include="static\js\uploadify\com\adobe\fileformats\vcard\Phone.as" />
+    <None Include="static\js\uploadify\com\adobe\fileformats\vcard\VCard.as" />
+    <None Include="static\js\uploadify\com\adobe\fileformats\vcard\VCardParser.as" />
+    <None Include="static\js\uploadify\com\adobe\images\BitString.as" />
+    <None Include="static\js\uploadify\com\adobe\images\JPGEncoder.as" />
+    <None Include="static\js\uploadify\com\adobe\images\PNGEncoder.as" />
+    <None Include="static\js\uploadify\com\adobe\net\DynamicURLLoader.as" />
+    <None Include="static\js\uploadify\com\adobe\net\IURIResolver.as" />
+    <None Include="static\js\uploadify\com\adobe\net\MimeTypeMap.as" />
+    <None Include="static\js\uploadify\com\adobe\net\proxies\RFC2817Socket.as" />
+    <None Include="static\js\uploadify\com\adobe\net\URI.as" />
+    <None Include="static\js\uploadify\com\adobe\net\URIEncodingBitmap.as" />
+    <None Include="static\js\uploadify\com\adobe\protocols\dict\Database.as" />
+    <None Include="static\js\uploadify\com\adobe\protocols\dict\Definition.as" />
+    <None Include="static\js\uploadify\com\adobe\protocols\dict\Dict.as" />
+    <None Include="static\js\uploadify\com\adobe\protocols\dict\DictionaryServer.as" />
+    <None Include="static\js\uploadify\com\adobe\protocols\dict\events\ConnectedEvent.as" />
+    <None Include="static\js\uploadify\com\adobe\protocols\dict\events\DatabaseEvent.as" />
+    <None Include="static\js\uploadify\com\adobe\protocols\dict\events\DefinitionEvent.as" />
+    <None Include="static\js\uploadify\com\adobe\protocols\dict\events\DefinitionHeaderEvent.as" />
+    <None Include="static\js\uploadify\com\adobe\protocols\dict\events\DictionaryServerEvent.as" />
+    <None Include="static\js\uploadify\com\adobe\protocols\dict\events\DisconnectedEvent.as" />
+    <None Include="static\js\uploadify\com\adobe\protocols\dict\events\ErrorEvent.as" />
+    <None Include="static\js\uploadify\com\adobe\protocols\dict\events\MatchEvent.as" />
+    <None Include="static\js\uploadify\com\adobe\protocols\dict\events\MatchStrategiesEvent.as" />
+    <None Include="static\js\uploadify\com\adobe\protocols\dict\events\NoMatchEvent.as" />
+    <None Include="static\js\uploadify\com\adobe\protocols\dict\MatchStrategy.as" />
+    <None Include="static\js\uploadify\com\adobe\protocols\dict\Response.as" />
+    <None Include="static\js\uploadify\com\adobe\protocols\dict\util\CompleteResponseEvent.as" />
+    <None Include="static\js\uploadify\com\adobe\protocols\dict\util\SocketHelper.as" />
+    <None Include="static\js\uploadify\com\adobe\serialization\json\JSON.as" />
+    <None Include="static\js\uploadify\com\adobe\serialization\json\JSONDecoder.as" />
+    <None Include="static\js\uploadify\com\adobe\serialization\json\JSONEncoder.as" />
+    <None Include="static\js\uploadify\com\adobe\serialization\json\JSONParseError.as" />
+    <None Include="static\js\uploadify\com\adobe\serialization\json\JSONToken.as" />
+    <None Include="static\js\uploadify\com\adobe\serialization\json\JSONTokenizer.as" />
+    <None Include="static\js\uploadify\com\adobe\serialization\json\JSONTokenType.as" />
+    <None Include="static\js\uploadify\com\adobe\utils\ArrayUtil.as" />
+    <None Include="static\js\uploadify\com\adobe\utils\DateUtil.as" />
+    <None Include="static\js\uploadify\com\adobe\utils\DictionaryUtil.as" />
+    <None Include="static\js\uploadify\com\adobe\utils\IntUtil.as" />
+    <None Include="static\js\uploadify\com\adobe\utils\NumberFormatter.as" />
+    <None Include="static\js\uploadify\com\adobe\utils\StringUtil.as" />
+    <None Include="static\js\uploadify\com\adobe\utils\XMLUtil.as" />
+    <None Include="static\js\uploadify\com\adobe\webapis\events\ServiceEvent.as" />
+    <None Include="static\js\uploadify\com\adobe\webapis\ServiceBase.as" />
+    <None Include="static\js\uploadify\com\adobe\webapis\URLLoaderBase.as" />
+    <None Include="static\js\uploadify\uploadify.fla" />
+    <None Include="static\js\uploadify\uploadify.php" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\wojilu.CodeGenerator\wojilu.CodeGenerator.csproj">
+      <Project>{B5D9C928-D75A-45B6-991A-1E61DEC15F42}</Project>
+      <Name>wojilu.CodeGenerator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\wojilu.Sample\wojilu.Sample.csproj">
+      <Project>{741C8E37-4645-4091-B242-26A24932ECCA}</Project>
+      <Name>wojilu.Sample</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>4526</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

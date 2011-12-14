@@ -1,0 +1,32 @@
+﻿
+<div>
+    <div class="adminMainTitle"><div class="adminSidebarTitleInternal">修改文章分类</div></div>
+
+    <div class="adminMainPanel">
+        <div class="formPanel">
+        <form method="post" action="#{ActionLink}" class="ajaxPostForm">
+	        <table style="width:100%;">
+                
+		        <tr>
+			        <td style="vertical-align:top;">Name</td>
+			        <td><input type="text" name="category.Name" value="#{category.Name}" style="width:250px;" /></td>
+		        </tr>
+                
+		        <tr>
+			        <td style="vertical-align:top;">Description</td>
+			        <td><textarea name="category.Description" style="width:95%;height:50px;">#{category.Description}</textarea></td>
+		        </tr>
+                
+		        <tr>
+			        <td style="vertical-align:top;">Created</td>
+			        <td><input type="text" name="category.Created" value="#{category.Created}" style="width:250px;" /></td>
+		        </tr>
+                
+		        <tr>
+			        <td>&nbsp;</td><td><input type="submit" class="btn" value="修改数据" /> <input type="button" class="btnReturn" value="返回" /></td>
+		        </tr>
+	        </table>
+        </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+﻿
+<div>
+    <div class="adminMainTitle"><div class="adminSidebarTitleInternal">添加文章</div></div>
+
+    <div class="adminMainPanel">
+        <div class="formPanel">
+        <form method="post" action="#{ActionLink}" class="ajaxPostForm">
+	        <table style="width:100%;">
+                
+		        <tr>
+			        <td style="vertical-align:top;">Title</td>
+			        <td><input type="text" name="article.Title" value="" style="width:250px;" /></td>
+		        </tr>
+                
+		        <tr>
+			        <td style="vertical-align:top;">Category</td>
+			        <td>#{article.Category}</td>
+		        </tr>
+                
+		        <tr>
+			        <td style="vertical-align:top;">Content</td>
+			        <td>#{Editor}</td>
+		        </tr>
+                
+		        <tr>
+			        <td style="vertical-align:top;">Created</td>
+			        <td><input type="text" name="article.Created" value="2011/12/14 21:04" style="width:150px;" /></td>
+		        </tr>
+                
+		        <tr>
+			        <td>&nbsp;</td><td><input type="submit" class="btn" value="添加数据" /> <input type="button" class="btnReturn" value="返回" /></td>
+		        </tr>
+	        </table>
+        </form>
+        </div>
+    </div>
+</div>
