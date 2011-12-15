@@ -8,12 +8,28 @@ using wojilu.ORM;
 using wojilu.Coder.Service;
 using wojilu.Web.Mvc;
 using wojilu.Web.Mvc.Attr;
+using wojilu.DI;
 
 namespace wojilu.Web.Controller {
 
     public class CodeController : ControllerBase {
 
         private static readonly ILog logger = LogManager.GetLogger( typeof( CodeController ) );
+
+        public CodeController() {
+
+            List<String> rootNs = MvcConfig.Instance.RootNamespace;
+            foreach (String ns in rootNs) {
+
+                String topLayoutStr = strUtil.Join( ns, "LayoutController", "." );
+                Type topLayoutType = null;
+                ObjectContext.Instance.TypeList.TryGetValue( topLayoutStr, out topLayoutType );
+                if (topLayoutType != null) {
+                    HideLayout( topLayoutType );
+                }
+            }
+
+        }
 
         public override void Layout() {
 
@@ -408,6 +424,8 @@ namespace wojilu.Web.Controller {
         private string getEntityPropertyName( EntityPropertyInfo ep, object propertyValue ) {
 
             IEntity pValue = propertyValue as IEntity;
+            if (pValue == null) return "";
+
             string val = null;
 
             EntityInfo ei = Entity.GetInfo( pValue );
