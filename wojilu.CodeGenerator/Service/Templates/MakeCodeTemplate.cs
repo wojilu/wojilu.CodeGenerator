@@ -72,7 +72,7 @@ a:hover { color:#5195ce}
 			<div style=""margin:20px 0px 10px 0px;font-size:12px;font-weight:bold;"">数据管理(#{objCount})</div>
 			<ul style=""margin-left:10px;"">
 				<!-- BEGIN list -->
-				<li style=""margin-bottom:3px;""><a href=""#{t.Link}"">#{t.Name}</a></li>
+				<li style=""margin-bottom:3px;""><a href=""#{t.Link}"" title=""#{t.FullName}[#{t.TableName}]"">#{t.Name}</a></li>
 				<!-- END list -->
 			</ul>
 		</div>
