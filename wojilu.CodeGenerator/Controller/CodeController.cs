@@ -42,7 +42,7 @@ namespace wojilu.Web.Controller {
             IBlock block = getBlock( "list" );
             List<String> keys = getOrderedKeys();
             foreach (String key in keys) {
-                EntityInfo ei = MappingClass.Instance.ClassList[ key] as EntityInfo;
+                EntityInfo ei = MappingClass.Instance.ClassList[key] as EntityInfo;
                 block.Set( "t.Name", ei.Label );
                 block.Set( "t.FullName", key );
                 block.Set( "t.TableName", ei.TableName );
@@ -109,7 +109,7 @@ namespace wojilu.Web.Controller {
             }
 
             StringBuilder sb = new StringBuilder();
-            sb.AppendFormat( "<div class='codeCmd'><a href=\"{0}\">+ 添加 {1}</a>", to( Add ) + "?typeName=" + typeName ,ei.Label );
+            sb.AppendFormat( "<div class='codeCmd'><a href=\"{0}\">+ 添加 {1}</a>", to( Add ) + "?typeName=" + typeName, ei.Label );
             if (strPropertyValue.Length > 0) {
                 sb.Append( "<span style=\"margin-left:15px;\">当前过滤:<span style=\"color:red;\">" );
                 sb.Append( strPropertyValue );
@@ -294,7 +294,12 @@ namespace wojilu.Web.Controller {
                 }
                 string control = Html.TextInput( pInfo.Name, str, style );
                 if (pInfo.IsLongText) {
-                    control = Editor.NewOne( pInfo.Name, str, "200px", editorJsPath, MvcConfig.Instance.JsVersion, Editor.ToolbarType.Full ).ToString();
+                    if (rft.GetAttribute( pInfo.Property, typeof( HtmlTextAttribute ) ) != null) {
+                        control = Editor.NewOne( pInfo.Name, str, "200px", editorJsPath, MvcConfig.Instance.JsVersion, Editor.ToolbarType.Full ).ToString();
+                    }
+                    else {
+                        control = "<div>" + Html.TextArea( pInfo.Name, str, "width:98%; height:80px;" ) + "</div>";
+                    }
                 }
                 else if (pInfo.IsEntity) {
                     string textField = getDropText( pInfo );
