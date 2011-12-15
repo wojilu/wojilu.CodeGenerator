@@ -40,15 +40,23 @@ namespace wojilu.Web.Controller {
             set( "makeCodeLink", to( MakeCode ) );
 
             IBlock block = getBlock( "list" );
-            int entityCount = 0;
-            foreach (DictionaryEntry entry in MappingClass.Instance.ClassList) {
-                EntityInfo ei = entry.Value as EntityInfo;
+            List<String> keys = getOrderedKeys();
+            foreach (String key in keys) {
+                EntityInfo ei = MappingClass.Instance.ClassList[ key] as EntityInfo;
                 block.Set( "t.Name", ei.Label );
                 block.Set( "t.Link", to( Model ) + "?typeName=" + ei.Type.FullName );
                 block.Next();
-                entityCount += 1;
             }
-            set( "objCount", entityCount );
+            set( "objCount", keys.Count );
+        }
+
+        private List<String> getOrderedKeys() {
+            List<String> keys = new List<string>();
+            foreach (DictionaryEntry entry in MappingClass.Instance.ClassList) {
+                keys.Add( entry.Key.ToString() );
+            }
+            keys.Sort();
+            return keys;
         }
 
         public void Index() {
