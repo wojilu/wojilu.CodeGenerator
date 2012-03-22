@@ -47,6 +47,7 @@ namespace wojilu.Web.Controller {
                 block.Set( "t.FullName", key );
                 block.Set( "t.TableName", ei.TableName );
                 block.Set( "t.Link", to( Model ) + "?typeName=" + ei.Type.FullName );
+                block.Set( "t.MakeSingleLink", to( MakeSingle ) + "?typeName=" + ei.Type.FullName );
                 block.Next();
             }
             set( "objCount", keys.Count );
@@ -65,13 +66,28 @@ namespace wojilu.Web.Controller {
             actionContent( getWelcome() + MakeCodeTemplate.GetProductInfo() );
         }
 
+        [HttpPost]
+        public void MakeSingle() {
+
+            String typeName = ctx.Get( "typeName" );
+            if (strUtil.IsNullOrEmpty( typeName )) {
+                actionContent( getWelcome() );
+                return;
+            }
+
+            string codePath = PathHelper.Map( autoCodePath );
+            string nsName = "wojilu.Web.Controller.Admin";
+            new CodeService( codePath, nsName ).MakeSingle( typeName );
+            actionContent( "<div style=\"margin:30px;\"><strong>[" + typeName + "]</strong> 的代码生成成功，请到 <span style=\"color:red;font-weight:bold;\">" + codePath + "</span> 查看。<br/>生成时间：<span style=\"color:blue;\">" + DateTime.Now + "</span></div>" );
+        }
+
 
         [HttpPost]
         public void MakeCode() {
             string codePath = PathHelper.Map( autoCodePath );
             string nsName = "wojilu.Web.Controller.Admin";
             new CodeService( codePath, nsName ).Make();
-            actionContent( "<div style=\"margin:30px;\">代码自动生成成功，请到 <span style=\"color:red;font-weight:bold;\">" + codePath + "</span> 查看。生成时间：<span style=\"color:blue;\">" + DateTime.Now + "</span></div>" );
+            actionContent( "<div style=\"margin:30px;\">代码自动生成成功，请到 <span style=\"color:red;font-weight:bold;\">" + codePath + "</span> 查看。<br/>生成时间：<span style=\"color:blue;\">" + DateTime.Now + "</span></div>" );
         }
 
         public void Model() {

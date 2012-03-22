@@ -11,6 +11,8 @@ namespace wojilu.Coder.Service {
 
     public class CodeService {
 
+        private static readonly ILog logger = LogManager.GetLogger( typeof( CodeService ) );
+
         private string targetPath;
         private string namespaceName;
 
@@ -31,6 +33,21 @@ namespace wojilu.Coder.Service {
 
             this.makeLayoutView();
             this.makeAllView();
+        }
+
+        internal void MakeSingle( string typeName ) {
+
+            EntityInfo ei = Entity.GetInfo( typeName );
+            if (ei == null) {
+                logger.Error( "MakeSingle error: EntityInfo  is null" );
+                return;
+            }
+
+            this.prepareDir();
+
+            this.makeOneController( ei );
+
+            this.makeActionViews( ei );
         }
 
 
@@ -452,6 +469,9 @@ namespace wojilu.Coder.Service {
         private string tab4 {
             get { return "                "; }
         }
+
+
+
 
     }
 }

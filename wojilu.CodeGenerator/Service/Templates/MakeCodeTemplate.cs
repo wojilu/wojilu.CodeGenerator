@@ -68,11 +68,16 @@ a:hover { color:#5195ce}
 	<tr>
 		<td id=""sidebar"">
 		<div style=""margin: 20px 10px;"">
-            <div style=""margin:5px 0px 10px 0px;font-size:14px;font-weight:bold;""><a href=""#{makeCodeLink}"" class=""postCmd"">生成代码</a></div>
+            <div style=""margin:5px 0px 10px 0px;font-size:14px;font-weight:bold;""><a href=""#{makeCodeLink}"" class=""postCmd"">
+<img src=""data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAnBJREFUeNqEU01oU0EQ/t5PrQULahO0Ja3UQLBiqfhDChUCVj0ISlGhh5xiyOEVPAQPHiRQDx5CTg2YSCBHQQ9FsSCh0qqFlGhoU4MFW39oicVUMbaN9ZHmvay7+xKTENB9DLMzO/u9b2ZnBEII2BoefRWiSsG/V/jRqGOkzsMAmFzzTZNvm0WyvrlDshs75OtPJgWyljPky48CYTFUQpU7TOQKUEkvQaA6nVGhlwg0HVQIdFLiesDWClEUoRU15ertKYzfHeRMxAqATm8IFEEWBRooQJJAhe4Fkeu8qvM4uUlmscrQrckQt6sAGgdgwTUJUqG2LkIQq/7mlmb8zm8rl24+qwXQeQpyHUAVhFG1du0HzQ6tLZQeMSH+5rNSBSgyBgJPoXERLGULsPd18pro5ZrMxJerNTh1SMXT8QdY/5TiILmVBawmHyOfeQuJ2rJksJNoTSosaUENgGg0GjpsUuF0OpFdfc8vfM8scTu3toyNlfkGEEaUsZbMZnNI0zTF5XIhEongQKcNpvYubP/awsupGJh/ZjoGUixgj8nCCy3Qr33vLjycSENUVVVxu90IBoPottrQc2KA/812/AzaOqzcz87XPi6giT1vmQkD4ilQgHAgEIDH48FcMoFUfJIG0YZKPMeHd0nuZ+dtFht/4gqIUE5B9Pl8IwzE7/fD6/UiPTfLAxbnZ7nN/B3dR9FrP2fkLxkvxT7+9H+H6fodYtm3hd6T/XBcGMKL2BMsphLo6euH/exl2s4lo8V5mxMcObgbg8P3qwDHzo+R1xM3QGraxzgiXJe3xhCVzxxX7tUNU/j0xbH/jXPDeP8RYADDyzNm2nZ9sQAAAABJRU5ErkJggg==""/>
+生成全部代码</a></div>
 			<div style=""margin:20px 0px 10px 0px;font-size:12px;font-weight:bold;"">数据管理(#{objCount})</div>
 			<ul style=""margin-left:10px;"">
 				<!-- BEGIN list -->
-				<li style=""margin-bottom:3px;""><a href=""#{t.Link}"" title=""#{t.FullName}[#{t.TableName}]"">#{t.Name}</a></li>
+				<li style=""margin-bottom:3px;"">
+<a href=""#{t.Link}"" title=""管理 #{t.FullName}[#{t.TableName}] 的数据"">#{t.Name}</a>
+<a href=""#{t.MakeSingleLink}"" style=""margin-left:5px;color:red;font-size:16px;"" title=""生成 [#{t.Name}] 的代码"" class=""postCmd""><img src=""data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABGdBTUEAAK/INwWK6QAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAGlSURBVChTdZLPaxNREMc/+zbJplsXIs3Bg0oQBMEQEA+CCMW75/4Hnjz02qvg3aMHL/64+C8Igj0UTS+FCEJhS7M1sWJbzO6G7Ca7+/J8b9OYkwPDDDPznZk332cpLVEUMRgMkFJiWRZLMb6JNRoNWq3WImwA/X5fhWGoiqJQuqDUPM9VmqYmrbrdrvJ9v/TFsputGytZUGQZMp+RTCbEcYwG0m63SZKEIAgoATUbji4yfqeQzC2OI4XnOtSqVfRUqtp2Oh3M6iXgV1rn1cGUl3sxe6cFO7tjvgQ5Da9ONpsyGo3Q6yGEQOz6KW98m4tJhe0HHpvXHVrrgnffU15/TbFsB9ddK6foJyDe9yL+xJKtOw43mg5eXbB9/wpnYc7Hw4Sfer01p4Zt6721iJ1HV7npwNv9MZ+/jTk+z3j+KaSpk88eetxqVpmzOrW4fc3h6b2cjTzlw37MwY8Zh0cJL55s8Pjuuu5siq0VP+a2J0FfyWlU3lkpuTDzvORiqSbU6/UWPMi5YjxVl5RcUmNVqFRW+o99g9QsMxwOy2/wPzEndV2Xv4Ja9Y+PYt1WAAAAAElFTkSuQmCC""/></a>
+</li>
 				<!-- END list -->
 			</ul>
 		</div>
