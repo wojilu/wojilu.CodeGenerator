@@ -43,7 +43,8 @@ namespace wojilu.Web.Controller {
             List<String> keys = getOrderedKeys();
             foreach (String key in keys) {
                 EntityInfo ei = MappingClass.Instance.ClassList[key] as EntityInfo;
-                block.Set( "t.Name", ei.Label );
+                //block.Set( "t.Name", ei.Label );
+                block.Set( "t.Name", key );
                 block.Set( "t.FullName", key );
                 block.Set( "t.TableName", ei.TableName );
                 block.Set( "t.Link", to( Model ) + "?typeName=" + ei.Type.FullName );

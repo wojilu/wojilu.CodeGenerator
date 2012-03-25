@@ -37,7 +37,7 @@ a:hover { color:#5195ce}
     #memberInfo {float:right; margin:12px 20px; font-weight:bold;font-size:14px;}
 
 #container {width:100%;}
-    #sidebar {	background:#efefef; width:200px;vertical-align:top;}
+    #sidebar {	background:#efefef; width:420px;vertical-align:top;}
     #contentMain { vertical-align:top;}
 
 #container table {border-collapse:collapse; border:1px #aaa solid;}
