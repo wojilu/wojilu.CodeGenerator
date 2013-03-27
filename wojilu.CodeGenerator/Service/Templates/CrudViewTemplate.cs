@@ -47,12 +47,12 @@ namespace wojilu.Coder.Service {
 	</tr>
     #{loopBegin}
 	<tr class=""tableItems"">
-        <td>#{d.Id}&nbsp;</td>
+        <td>#{x.Id}&nbsp;</td>
         <!-- BEGIN row -->
         <td>#{p.Name}&nbsp;</td><!-- END row -->
 		<td>
-            <a href=""#{d.LinkEdit}"" class=""edit"">修改</a>
-            <a href=""#{d.LinkDelete}"" class=""deleteCmd delete"">删除</a>
+            <a href=""#{x.data.edit}"" class=""edit"">修改</a>
+            <a href=""#{x.data.delete}"" class=""deleteCmd delete"">删除</a>
         </td>
 	</tr>
     #{loopEnd}

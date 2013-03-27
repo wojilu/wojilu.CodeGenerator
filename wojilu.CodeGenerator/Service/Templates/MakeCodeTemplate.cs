@@ -14,10 +14,7 @@ namespace wojilu.Coder.Service {
 <head>
 <title>wojilu framework 代码生成 & 对象数据管理</title>
 
-<script src=""~js/jquery.js?#{jsVersion}"" type=""text/javascript""></script>
-<script src=""~js/wojilu.common.js?#{jsVersion}"" type=""text/javascript""></script>
-<script src=""~js/lang.zh-cn.js?#{jsVersion}"" type=""text/javascript""></script>
-<script src=""~js/wojilu.common.admin.js?#{jsVersion}"" type=""text/javascript""></script>
+<script>var __funcList = []; var _run = function (aFunc) { __funcList.push(aFunc); }; var require = { urlArgs: 'v=#{jsVersion}' };</script>
 <style>
 
 body{margin:0px;}
@@ -89,6 +86,8 @@ a:hover { color:#5195ce}
 <div id=""footer"">copyright &copy; 2010 - 2012  <a href=""http://www.wojilu.com"" target=""_blank"">www.wojilu.com</a></div>
 
 </div>
+<script data-main=""~js/main"" src=""~js/lib/require-jquery-wojilu.js?v=#{jsVersion}""></script>
+<script>require([""wojilu._admin""])</script>
 </body>
 </html>
 ";

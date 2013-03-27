@@ -15,38 +15,30 @@ namespace wojilu.Web.Controller.Admin {
             set( "addLink", to( Add ) );
 
             DataPage<Article> list = Article.findPage("");
-            bindList( list.Results );
-            set( "page", list.PageBar );
-        }
+            list.Results.ForEach( x => {
+                x.data["Summary"] = strUtil.ParseHtml( x.Content, 30 );
+                x.data.edit = to( Edit, x.Id );
+                x.data.delete = to( Delete, x.Id );
+            } );
 
-        private void bindList( List<Article> list ) {
-            IBlock block = getBlock( "list" );
-            foreach (Article data in list) {
-                
-                block.Set( "d.Title", data.Title );
-                block.Set( "d.Category", data.Category.Name );
-                block.Set( "d.Content", strUtil.ParseHtml( data.Content, 50 ) );
-                block.Set( "d.Created", data.Created );
-                block.Set( "d.Id", data.Id );
-                block.Set( "d.LinkEdit", to( Edit, data.Id ) );
-                block.Set( "d.LinkDelete", to( Delete, data.Id ) );
-                block.Next();
-            }
+            bindList( "list", "x", list.Results );
+
+            set( "page", list.PageBar );
         }
 
         public void Add() {
             target( Create );
-            dropList( "article.Category", Category.findAll(), "Name=Id", null );
+            dropList( "x.Category", Category.findAll(), "Name=Id", null );
 
-            editorFull( "article.Content", "", "350px" );
+            editorFull( "x.Content", "", "350px" );
             
-            bind( "article", new  Article() );
+            bind( "x", new  Article() );
         }
 
         [HttpPost]
         public void Create() {
             
-            Article data = ctx.PostValue<Article>();
+            Article data = ctx.PostObject<Article>( "x" );
             if (ctx.HasErrors) {
                 echoError();
                 return;
@@ -65,10 +57,10 @@ namespace wojilu.Web.Controller.Admin {
                 echo( "数据不存在" );
                 return;
             }
-            bind( "article", data );
-            dropList( "article.Category", Category.findAll(), "Name=Id", data.Category.Id );
+            bind( "x", data );
+            dropList( "x.Category", Category.findAll(), "Name=Id", data.Category.Id );
 
-            editorFull( "article.Content", data.Content, "350px" );
+            editorFull( "x.Content", data.Content, "350px" );
             
         }
 
@@ -81,7 +73,7 @@ namespace wojilu.Web.Controller.Admin {
                 return;
             }
 
-            data = ctx.PostValue( data ) as Article;
+            data = ctx.PostObject( data, "x" ) as Article;
             if (ctx.HasErrors) {
                 echoError();
                 return;

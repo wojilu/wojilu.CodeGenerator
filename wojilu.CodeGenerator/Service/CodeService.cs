@@ -101,31 +101,6 @@ namespace wojilu.Coder.Service {
 
             template.Set( "domainCamelName", strUtil.GetCamelCase( ei.Name ) );
 
-            IBlock setList = template.GetBlock( "setList" );
-            foreach (EntityPropertyInfo ep in ei.SavedPropertyList) {
-
-                setList.Set( "propertyName", ep.Name );
-
-                if (ep.IsLongText) {
-
-                    if (rft.GetAttribute( ep.Property, typeof( HtmlTextAttribute ) ) == null) {
-                        setList.Set( "propertyValue", "strUtil.CutString( data." + ep.Name + ", 30 )" );
-                    }
-                    else {
-                        setList.Set( "propertyValue", "strUtil.ParseHtml( data." + ep.Name + ", 50 )" );
-                    }
-                }
-                else if (ep.IsEntity) {
-
-                    String entityName = getEntityName( ep );
-                    setList.Set( "propertyValue", "data." + entityName );
-                }
-                else {
-                    setList.Set( "propertyValue", "data." + ep.Name );
-                }
-
-                setList.Next();
-            }
 
             template.Set( "listCode", codeList );
             template.Set( "addCode", codeAdd );
@@ -147,14 +122,14 @@ namespace wojilu.Coder.Service {
             String entityProperty = "";
             foreach (EntityPropertyInfo ep in ei.SavedPropertyList) {
                 if (ep.IsLongText) {
-                    block.Set( "Name", eiName + "." + ep.Name );
+                    block.Set( "Name", "x." + ep.Name );
                     block.Next();
                 }
 
                 else if (ep.IsEntity) {
                     String epName = getEntityNameSimple( ep );
                     if (epName != null) {
-                        entityProperty += string.Format( tab3 + "dropList( \"{0}.{1}\", {2}.findAll(), \"{3}=Id\", null );" + Environment.NewLine, eiName, ep.Name, ep.EntityInfo.Name, epName );
+                        entityProperty += string.Format( tab3 + "dropList( \"x.{0}\", {1}.findAll(), \"{2}=Id\", null );" + Environment.NewLine, ep.Name, ep.EntityInfo.Name, epName );
                     }
                 }
             }
@@ -190,14 +165,14 @@ namespace wojilu.Coder.Service {
             IBlock block = template.GetBlock( "editor" );
             foreach (EntityPropertyInfo ep in ei.SavedPropertyList) {
                 if (ep.IsLongText) {
-                    block.Set( "Name", eiName + "." + ep.Name );
+                    block.Set( "Name", "x." + ep.Name );
                     block.Set( "PName", ep.Name );
                     block.Next();
                 }
                 else if (ep.IsEntity) {
                     String epName = getEntityNameSimple( ep );
                     if (epName != null) {
-                        entityProperty += string.Format( tab3 + "dropList( \"{0}.{1}\", {2}.findAll(), \"{3}=Id\", data.{1}.Id );" + Environment.NewLine, eiName, ep.Name, ep.EntityInfo.Name, epName );
+                        entityProperty += string.Format( tab3 + "dropList( \"x.{0}\", {1}.findAll(), \"{2}=Id\", data.{1}.Id );" + Environment.NewLine, ep.Name, ep.EntityInfo.Name, epName );
                     }
                 }
             }
@@ -328,25 +303,45 @@ namespace wojilu.Coder.Service {
 
             IBlock block = template.GetBlock( "list" );
             foreach (EntityPropertyInfo info in ei.SavedPropertyList) {
+                string rule = "";
+                string msg = "";
+                string valid = "";
+                string tip = "";
+
                 if (!info.Name.Equals( "Id" )) {
                     block.Set( "m.Label", info.Label );
-                    block.Set( "m.InputBox", this.getInputBox( info, isEdit ) );
+                    block.Set( "m.InputBox", this.getInputBox( info, isEdit, ref valid, ref rule, ref msg, ref tip ).ToString().Replace( "name=", tip + " name=" ) + this.setValid( valid, msg, rule ) );
                     block.Next();
                 }
             }
             return template.ToString();
         }
 
-        private object getInputBox( EntityPropertyInfo ep, bool isEdit ) {
+        private string setValid( string valid, string msg, string rule ) {
+            return string.Format( "\n<span {0} {1} {2}></span>", valid, rule, msg ); ;
+        }
 
-            string controlName = strUtil.GetCamelCase( ep.ParentEntityInfo.Name ) + "." + ep.Name;
+        private object getInputBox( EntityPropertyInfo ep, bool isEdit, ref string valid, ref string rule, ref string msg, ref string tip ) {
+            string controlName = "x." + ep.Name;
             string valueStr = string.Empty;
             if (isEdit) valueStr = "#{" + controlName + "}";
-
+            if (rft.GetAttribute( ep.Property, typeof( NotNullAttribute ) ) != null) {
+                valid = "class=\"valid\"";
+                msg = string.Format( "msg=\"{0}\"", rft.GetPropertyValue( rft.GetAttribute( ep.Property, typeof( NotNullAttribute ) ), "Message" ) );
+            }
+            if (rft.GetAttribute( ep.Property, typeof( EmailAttribute ) ) != null) {
+                rule = "rule=\"email\"";
+                msg = string.Format( "msg=\"输入Email格式有误\"", ep.Label == null ? ep.Name : ep.Label );
+            }
+            if (rft.GetAttribute( ep.Property, typeof( TinyIntAttribute ) ) != null) {
+                rule = "rule=\"int\"";
+            }
+            if (rft.GetAttribute( ep.Property, typeof( MoneyAttribute ) ) != null) {
+                rule = "rule=\"money\"";
+            }
+            tip = string.Format( " class=\"tipInput\" tip=\"请输入{0}\"", ep.Label == null ? ep.Name : ep.Label );
             if (ep.IsLongText) {
-
                 if (rft.GetAttribute( ep.Property, typeof( HtmlTextAttribute ) ) != null) {
-
                     return "#{Editor}";
                 }
                 else {
@@ -384,7 +379,7 @@ namespace wojilu.Coder.Service {
                     block.Set( "p.Name", info.Label );
                 }
                 else {
-                    block.Set( "p.Name", "#{d." + info.Name + "}" );
+                    block.Set( "p.Name", "#{x." + info.Name + "}" );
                 }
                 block.Next();
             }
@@ -423,7 +418,7 @@ namespace wojilu.Coder.Service {
 
                 EntityInfo ei = entry.Value as EntityInfo;
                 String lmName = strUtil.GetCamelCase( ei.Name );
-                
+
                 block.Set( "m.Name", ei.Label );
                 block.Set( "m.LName", lmName );
                 block.Set( "m.AdminLink", "#{" + lmName + ".AdminLink}" );

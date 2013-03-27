@@ -21,20 +21,9 @@ namespace #{namespace} {
             #{listCode}
         }
 
-        private void bindList( List<#{controllerName}> list ) {
-            IBlock block = getBlock( ""list"" );
-            foreach (#{controllerName} data in list) {
-                <!-- BEGIN setList -->
-                block.Set( ""d.#{propertyName}"", #{propertyValue} );<!-- END setList -->
-                block.Set( ""d.LinkEdit"", to( Edit, data.Id ) );
-                block.Set( ""d.LinkDelete"", to( Delete, data.Id ) );
-                block.Next();
-            }
-        }
-
         public void Add() {
             #{addCode}
-            bind( ""#{domainCamelName}"", new  #{controllerName}() );
+            bind( ""x"", new  #{controllerName}() );
         }
 
         [HttpPost]
@@ -76,7 +65,7 @@ namespace #{namespace} {
                 echo( ""数据不存在"" );
                 return;
             }
-            bind( ""#{domainCamelName}"", data );
+            bind( ""x"", data );
 #{entityProperty}
             <!-- BEGIN editor -->editorFull( ""#{Name}"", data.#{PName}, ""350px"" );
             <!-- END editor -->";
@@ -85,7 +74,7 @@ namespace #{namespace} {
 
         public static string GetCreateAction() {
             return @"
-            #{m.Name} data = ctx.PostValue<#{m.Name}>();
+            #{m.Name} data = ctx.PostObject<#{m.Name}>( ""x"" );
             if (ctx.HasErrors) {
                 echoError();
                 return;
@@ -103,7 +92,7 @@ namespace #{namespace} {
                 return;
             }
 
-            data = ctx.PostValue( data ) as #{m.Name};
+            data = ctx.PostObject( data, ""x"" ) as #{m.Name};
             if (ctx.HasErrors) {
                 echoError();
                 return;
@@ -131,7 +120,13 @@ namespace #{namespace} {
             set( ""addLink"", to( Add ) );
 
             DataPage<#{model.Name}> list = #{model.Name}.findPage("""");
-            bindList( list.Results );
+            list.Results.ForEach( x => {
+                x.data.edit = to( Edit, x.Id );
+                x.data.delete = to( Delete, x.Id );
+            } );
+
+            bindList( ""list"", ""x"", list.Results );
+
             set( ""page"", list.PageBar );";
         }
 

@@ -15,37 +15,27 @@ namespace wojilu.Web.Controller.Admin {
             set( "addLink", to( Add ) );
 
             DataPage<User> list = User.findPage("");
-            bindList( list.Results );
-            set( "page", list.PageBar );
-        }
+            list.Results.ForEach( x => {
+                x.data.edit = to( Edit, x.Id );
+                x.data.delete = to( Delete, x.Id );
+            } );
 
-        private void bindList( List<User> list ) {
-            IBlock block = getBlock( "list" );
-            foreach (User data in list) {
-                
-                block.Set( "d.Name", data.Name );
-                block.Set( "d.Pwd", data.Pwd );
-                block.Set( "d.Gender", data.Gender );
-                block.Set( "d.Description", data.Description );
-                block.Set( "d.Created", data.Created );
-                block.Set( "d.Id", data.Id );
-                block.Set( "d.LinkEdit", to( Edit, data.Id ) );
-                block.Set( "d.LinkDelete", to( Delete, data.Id ) );
-                block.Next();
-            }
+            bindList( "list", "x", list.Results );
+
+            set( "page", list.PageBar );
         }
 
         public void Add() {
             target( Create );
 
             
-            bind( "user", new  User() );
+            bind( "x", new  User() );
         }
 
         [HttpPost]
         public void Create() {
             
-            User data = ctx.PostValue<User>();
+            User data = ctx.PostObject<User>( "x" );
             if (ctx.HasErrors) {
                 echoError();
                 return;
@@ -64,7 +54,7 @@ namespace wojilu.Web.Controller.Admin {
                 echo( "数据不存在" );
                 return;
             }
-            bind( "user", data );
+            bind( "x", data );
 
             
         }
@@ -78,7 +68,7 @@ namespace wojilu.Web.Controller.Admin {
                 return;
             }
 
-            data = ctx.PostValue( data ) as User;
+            data = ctx.PostObject( data, "x" ) as User;
             if (ctx.HasErrors) {
                 echoError();
                 return;

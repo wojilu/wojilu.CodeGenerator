@@ -9,25 +9,25 @@
 	<tr class="tableHeader">
         <th>编号</th>
         
-		<th>Name</th>
-		<th>Pwd</th>
-		<th>Gender</th>
-		<th>Description</th>
-		<th>Created</th>
+		<th>名字</th>
+		<th>密码</th>
+		<th>性别</th>
+		<th>简介</th>
+		<th>创建时间</th>
 		<th>管理</th>
 	</tr>
     <!-- BEGIN list -->
 	<tr class="tableItems">
-        <td>#{d.Id}&nbsp;</td>
+        <td>#{x.Id}&nbsp;</td>
         
-        <td>#{d.Name}&nbsp;</td>
-        <td>#{d.Pwd}&nbsp;</td>
-        <td>#{d.Gender}&nbsp;</td>
-        <td>#{d.Description}&nbsp;</td>
-        <td>#{d.Created}&nbsp;</td>
+        <td>#{x.Name}&nbsp;</td>
+        <td>#{x.Pwd}&nbsp;</td>
+        <td>#{x.Gender}&nbsp;</td>
+        <td>#{x.Description}&nbsp;</td>
+        <td>#{x.Created}&nbsp;</td>
 		<td>
-            <a href="#{d.LinkEdit}" class="edit">修改</a>
-            <a href="#{d.LinkDelete}" class="deleteCmd delete">删除</a>
+            <a href="#{x.data.edit}" class="edit">修改</a>
+            <a href="#{x.data.delete}" class="deleteCmd delete">删除</a>
         </td>
 	</tr>
     <!-- END list -->

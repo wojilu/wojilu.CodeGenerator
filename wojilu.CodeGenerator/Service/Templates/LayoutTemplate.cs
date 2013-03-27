@@ -36,16 +36,13 @@ namespace wojilu.Web.Controller.Admin {
 <html xmlns=""http://www.w3.org/1999/xhtml"" >
 <head>
     <title>文章管理</title>
-    <link href=""~css/wojilu.common.css?v=#{cssVersion}"" rel=""stylesheet"" type=""text/css"" />
-    <link href=""~css/wojilu.common.admin.css?v=#{cssVersion}"" rel=""stylesheet"" type=""text/css"" />
+    <link href=""~css/wojilu._common.css?v=#{cssVersion}"" rel=""stylesheet"" type=""text/css"" />
+    <link href=""~css/wojilu._admin.css?v=#{cssVersion}"" rel=""stylesheet"" type=""text/css"" />
     <link href=""~css/wojilu.site.admin.css?v=#{cssVersion}"" rel=""stylesheet"" type=""text/css"" />
-    <script src=""~js/jquery.js?v=#{jsVersion}"" type=""text/javascript""></script>
-    <script src=""~js/lang.zh-cn.js?v=#{jsVersion}"" type=""text/javascript""></script>
-    <script src=""~js/wojilu.common.js?v=#{jsVersion}"" type=""text/javascript""></script>
-    <script src=""~js/wojilu.common.admin.js?v=#{jsVersion}"" type=""text/javascript""></script>
+<script>var __funcList = []; var _run = function (aFunc) { __funcList.push(aFunc); }; var require = { urlArgs: 'v=#{jsVersion}' };</script>
     
 <script  type=""text/javascript"">
-    $(document).ready(function () {
+    _run(function () {
         var topNavHeight = $('#headerContainer').height();
         $('.adminContainer').height($(window).height() - topNavHeight - 2);
     });
@@ -88,7 +85,8 @@ namespace wojilu.Web.Controller.Admin {
 		<td class=""adminMain"" id=""main"">#{layout_content}</td>
 	</tr>
 </table>
-
+<script data-main=""~js/main"" src=""~js/lib/require-jquery-wojilu.js?v=#{jsVersion}""></script>
+<script>require([""wojilu._admin""])</script>
 </body>
 </html>
 ";

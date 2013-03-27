@@ -9,23 +9,23 @@
 	<tr class="tableHeader">
         <th>编号</th>
         
-		<th>Title</th>
-		<th>Category</th>
-		<th>Content</th>
-		<th>Created</th>
+		<th>标题</th>
+		<th>分类</th>
+		<th>内容</th>
+		<th>创建时间</th>
 		<th>管理</th>
 	</tr>
     <!-- BEGIN list -->
 	<tr class="tableItems">
-        <td>#{d.Id}&nbsp;</td>
+        <td>#{x.Id}&nbsp;</td>
         
-        <td>#{d.Title}&nbsp;</td>
-        <td>#{d.Category}&nbsp;</td>
-        <td>#{d.Content}&nbsp;</td>
-        <td>#{d.Created}&nbsp;</td>
+        <td>#{x.Title}&nbsp;</td>
+        <td>#{x.Category.Name}&nbsp;</td>
+        <td>#{x.data.Summary}&nbsp;</td>
+        <td>#{x.Created}&nbsp;</td>
 		<td>
-            <a href="#{d.LinkEdit}" class="edit">修改</a>
-            <a href="#{d.LinkDelete}" class="deleteCmd delete">删除</a>
+            <a href="#{x.data.edit}" class="edit">修改</a>
+            <a href="#{x.data.delete}" class="deleteCmd delete">删除</a>
         </td>
 	</tr>
     <!-- END list -->

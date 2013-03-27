@@ -8,23 +8,27 @@
 	        <table style="width:100%;">
                 
 		        <tr>
-			        <td style="vertical-align:top;">Title</td>
-			        <td><input type="text" name="article.Title" value="#{article.Title}" style="width:250px;" /></td>
+			        <td style="vertical-align:top;">标题</td>
+			        <td><input type="text"  class="tipInput" tip="请输入标题" name="x.Title" value="#{x.Title}" style="width:450px;" />
+<span class="valid"  msg="请填写标题"></span></td>
 		        </tr>
                 
 		        <tr>
-			        <td style="vertical-align:top;">Category</td>
-			        <td>#{article.Category}</td>
+			        <td style="vertical-align:top;">分类</td>
+			        <td>#{x.Category}
+<span   ></span></td>
 		        </tr>
                 
 		        <tr>
-			        <td style="vertical-align:top;">Content</td>
-			        <td>#{Editor}</td>
+			        <td style="vertical-align:top;">内容</td>
+			        <td>#{Editor}
+<span class="valid"  msg="请填写内容"></span></td>
 		        </tr>
                 
 		        <tr>
-			        <td style="vertical-align:top;">Created</td>
-			        <td><input type="text" name="article.Created" value="#{article.Created}" style="width:250px;" /></td>
+			        <td style="vertical-align:top;">创建时间</td>
+			        <td><input type="text"  class="tipInput" tip="请输入创建时间" name="x.Created" value="#{x.Created}" style="width:250px;" />
+<span   ></span></td>
 		        </tr>
                 
 		        <tr>

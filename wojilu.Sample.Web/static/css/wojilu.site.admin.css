@@ -38,6 +38,8 @@ div.formPanel {background:#eaf3ff; border:1px #898c95 solid; padding:6px 10px 15
 
 /* 数据表格 */
 #dataAdminList {width:100%;margin-top:0px;font-size:12px;  border-collapse:collapse;}
+
+
 .adminBar td{padding:0px 0px 0px 5px; border-bottom:1px #6699cc solid; background:url(../img/site/admin/gridtoolbar_back.gif);  height:26px; }
 .gridSpace {background:url(../img/site/admin/mnu_hspacergrid.gif) no-repeat;margin:0 5px;}
 
@@ -45,14 +47,15 @@ div.formPanel {background:#eaf3ff; border:1px #898c95 solid; padding:6px 10px 15
 
 tr.tableHeader { background: #f0f0f0 url(../img/site/admin/grid-hrow.gif); color:#000;}								
 .tableHeader td{border-bottom:0px #999999 solid;padding:1px 0px 3px 10px; height:24px;}
+
 tr.tableItems { background-color: #fff; }	
+
+
+
 .tableItems td a{color:#000;}
 .tableItems table td {border-bottom:0px;}
 
 td.adminPage {background:#efefef;}
-
-.edit { background:url("~img/edit.gif") no-repeat; padding-left:22px;}
-.delete { background:url("~img/delete.gif") no-repeat; padding-left:15px;}
 
 /*tab*/
 table.tabHeader {margin-top:10px; margin-left:10px; }
