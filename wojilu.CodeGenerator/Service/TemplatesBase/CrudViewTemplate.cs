@@ -2,9 +2,9 @@
 
 namespace wojilu.Coder.Service {
 
-    public class CrudViewTemplate {
+    public class CrudViewTemplate : ICrudViewTemplate {
 
-        public static string GetAddView() {
+        public string GetAddView() {
             return @"
 <div>
     <div class=""adminMainTitle""><div class=""adminSidebarTitleInternal"">添加#{mName}</div></div>
@@ -30,7 +30,7 @@ namespace wojilu.Coder.Service {
 ";
         }
 
-        public static string GetListView() {
+        public string GetListView() {
             return @"
 <div>
     <div class=""adminMainTitle""><div class=""adminSidebarTitleInternal"">数据列表</div></div>

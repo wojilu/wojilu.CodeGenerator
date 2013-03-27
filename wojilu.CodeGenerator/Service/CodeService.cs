@@ -9,7 +9,7 @@ using wojilu.Web.Mvc;
 
 namespace wojilu.Coder.Service {
 
-    public class CodeService {
+    public class CodeService : ICodeService {
 
         private static readonly ILog logger = LogManager.GetLogger( typeof( CodeService ) );
 
@@ -19,9 +19,16 @@ namespace wojilu.Coder.Service {
         private string viewPath;
         private string controllerPath;
 
-        public CodeService( string codePath, string nsName ) {
+        public ICrudViewTemplate crudViewTemplate { get; set; }
+
+        public CodeService( ) {
+            this.crudViewTemplate = new CrudViewTemplate();
+        }
+
+        public ICodeService Init( string codePath, string nsName ) {
             this.targetPath = codePath;
             this.namespaceName = nsName;
+            return this;
         }
 
         public void Make() {
@@ -35,7 +42,7 @@ namespace wojilu.Coder.Service {
             this.makeAllView();
         }
 
-        internal void MakeSingle( string typeName ) {
+        public void MakeSingle( string typeName ) {
 
             EntityInfo ei = Entity.GetInfo( typeName );
             if (ei == null) {
@@ -70,7 +77,7 @@ namespace wojilu.Coder.Service {
             }
         }
 
-        //-------------------------------------controller-----------------------------------------------------------------------------------------------------
+        //---------------------controller---------------------------------------------------
 
         private void makeAllController() {
             foreach (DictionaryEntry entry in MappingClass.Instance.ClassList) {
@@ -249,7 +256,7 @@ namespace wojilu.Coder.Service {
 
 
 
-        //-------------------------------------view-----------------------------------------------------------------------------------------------------
+        //-----------------------view----------------------------------------------
 
         private void makeAllView() {
             foreach (DictionaryEntry entry in MappingClass.Instance.ClassList) {
@@ -281,7 +288,7 @@ namespace wojilu.Coder.Service {
 
         private void makeView_Action_List( string modelControllerDir, EntityInfo ei ) {
             Template template = new Template();
-            template.InitContent( CrudViewTemplate.GetListView() );
+            template.InitContent( crudViewTemplate.GetListView() );
             template.Set( "m.Name", ei.Label );
             IBlock block = template.GetBlock( "header" );
             IBlock block2 = template.GetBlock( "row" );
@@ -298,7 +305,7 @@ namespace wojilu.Coder.Service {
         private string getEditPage( EntityInfo ei, bool isEdit ) {
 
             Template template = new Template();
-            template.InitContent( CrudViewTemplate.GetAddView() );
+            template.InitContent( crudViewTemplate.GetAddView() );
             template.Set( "mName", ei.Label );
 
             IBlock block = template.GetBlock( "list" );
@@ -388,7 +395,7 @@ namespace wojilu.Coder.Service {
 
 
 
-        //----------------------------------------layout--------------------------------------------------------------------------------------------------
+        //---------------------------layout------------------------------------------------
 
 
         private void makeLayoutController() {
@@ -431,7 +438,7 @@ namespace wojilu.Coder.Service {
             wojilu.IO.File.Write( Path.Combine( path, "Layout.html" ), template.ToString() );
         }
 
-        //------------------------------------------------------------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------------
 
 
         private string getEntityName( EntityPropertyInfo ep ) {

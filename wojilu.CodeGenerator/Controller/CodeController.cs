@@ -16,7 +16,11 @@ namespace wojilu.Web.Controller {
 
         private static readonly ILog logger = LogManager.GetLogger( typeof( CodeController ) );
 
+        public ICodeService codeService { get; set; }
+
         public CodeController() {
+
+            codeService = ObjectContext.Create<CodeService>();
 
             List<String> rootNs = MvcConfig.Instance.RootNamespace;
             foreach (String ns in rootNs) {
@@ -78,7 +82,7 @@ namespace wojilu.Web.Controller {
 
             string codePath = PathHelper.Map( autoCodePath );
             string nsName = "wojilu.Web.Controller.Admin";
-            new CodeService( codePath, nsName ).MakeSingle( typeName );
+            codeService.Init( codePath, nsName ).MakeSingle( typeName );
             actionContent( "<div style=\"margin:30px;\"><strong>[" + typeName + "]</strong> 的代码生成成功，请到 <span style=\"color:red;font-weight:bold;\">" + codePath + "</span> 查看。<br/>生成时间：<span style=\"color:blue;\">" + DateTime.Now + "</span></div>" );
         }
 
@@ -87,7 +91,7 @@ namespace wojilu.Web.Controller {
         public void MakeCode() {
             string codePath = PathHelper.Map( autoCodePath );
             string nsName = "wojilu.Web.Controller.Admin";
-            new CodeService( codePath, nsName ).Make();
+            codeService.Init( codePath, nsName ).Make();
             actionContent( "<div style=\"margin:30px;\">代码自动生成成功，请到 <span style=\"color:red;font-weight:bold;\">" + codePath + "</span> 查看。<br/>生成时间：<span style=\"color:blue;\">" + DateTime.Now + "</span></div>" );
         }
 
