@@ -11,7 +11,7 @@
 1. 将 wojilu.CodeGenerator.dll 拷贝到你的web项目的bin目录下 
 2. 在 web.config 中的 InjectAssembly 中增加 wojilu.CodeGenerator 
 3. 访问你的网站，在根目录后面输入 /Code/Index.aspx
-4. 点击左侧命令，生成代码。代码再 /_autocode/ 中
+4. 点击左侧命令，生成代码。代码在 /_autocode/ 中
 5. 更多图文教程，请访问 <http://www.wojilu.com/forum1/topic/2406>
 
 

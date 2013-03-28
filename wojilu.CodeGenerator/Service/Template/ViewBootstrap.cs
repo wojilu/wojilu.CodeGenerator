@@ -1,36 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace wojilu.Coder.Service {
-    
-    public class LayoutTemplate {
 
-        public static string GetAdminLayoutAction() {
+    public class ViewBootstrap : IViewTemplate {
 
-            return @"
-using System;
-using System.Collections.Generic;
-using System.Text;
-using wojilu.Web.Mvc;
-
-namespace wojilu.Web.Controller.Admin {
-
-    public class LayoutController : ControllerBase {
-
-        public override void Layout() {
-
-            <!-- BEGIN list -->
-            set( ""#{lmName}.AdminLink"", to( new Admin.#{mName}Controller().List ) );<!-- END list -->
-
-        }
-    }
-}
-";
-
-        }
-
-        public static string GetAdminLayoutView() {
+        public string GetLayoutView() {
             return @"
 <!DOCTYPE html PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xmlns=""http://www.w3.org/1999/xhtml"" >
@@ -92,6 +66,63 @@ namespace wojilu.Web.Controller.Admin {
 ";
         }
 
+        public string GetAddView() {
+            return @"
+<div>bootstrap</div>
+        <div class=""formPanel"">
+        <form method=""post"" action=""#{ActionLink}"" class=""ajaxPostForm"">
+	        <table style=""width:100%;"">
+                <!-- BEGIN list -->
+		        <tr>
+			        <td style=""vertical-align:top;"">#{m.Label}</td>
+			        <td>#{m.InputBox}</td>
+		        </tr>
+                <!-- END list -->
+		        <tr>
+			        <td>&nbsp;</td><td><input type=""submit"" class=""btn"" value=""添加数据"" /> <input type=""button"" class=""btnReturn"" value=""返回"" /></td>
+		        </tr>
+	        </table>
+        </form>
+        </div>
+
+";
+        }
+
+        public string GetListView() {
+            return @"
+
+
+<table cellspacing=""1"" cellpadding=""3""  class=""dataAdminList"" id=""dataAdminList"">
+    <tr class=""adminBar""><td colspan=""#{columnCount}""><div><a href=""#{addLink}""><img src=""~img/add.gif""/> 添加#{m.Name}</a></div></td></tr>
+	<tr class=""tableHeader"">
+        <th>编号</th>
+        <!-- BEGIN header -->
+		<th>#{p.Name}</th><!-- END header -->
+		<th>管理</th>
+	</tr>
+    #{loopBegin}
+	<tr class=""tableItems"">
+        <td>#{x.Id}&nbsp;</td>
+        <!-- BEGIN row -->
+        <td>#{p.Name}&nbsp;</td><!-- END row -->
+		<td>
+            <a href=""#{x.data.edit}"" class=""edit"">修改</a>
+            <a href=""#{x.data.delete}"" class=""deleteCmd delete"">删除</a>
+        </td>
+	</tr>
+    #{loopEnd}
+</table>
+<div>
+	#{page}
+</div>
+
+";
+        }
+
+
+
+
 
     }
 }
+

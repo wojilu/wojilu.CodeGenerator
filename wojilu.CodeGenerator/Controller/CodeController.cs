@@ -38,7 +38,7 @@ namespace wojilu.Web.Controller {
         public override void Layout() {
 
             utils.setCurrentView( new Template() );
-            utils.getCurrentView().InitContent( MakeCodeTemplate.GetLayoutView() );
+            utils.getCurrentView().InitContent( ViewHelper.GetLayoutView() );
 
             set( "adminLink", to( Index ) );
             set( "makeCodeLink", to( MakeCode ) );
@@ -68,7 +68,7 @@ namespace wojilu.Web.Controller {
         }
 
         public void Index() {
-            actionContent( getWelcome() + MakeCodeTemplate.GetProductInfo() );
+            actionContent( getWelcome() + ViewHelper.GetProductInfo() );
         }
 
         [HttpPost]
@@ -514,7 +514,7 @@ namespace wojilu.Web.Controller {
 
 
         private String getWelcome() {
-            return MakeCodeTemplate.GetWelcome();
+            return ViewHelper.GetWelcome();
         }
 
         private string appPath {

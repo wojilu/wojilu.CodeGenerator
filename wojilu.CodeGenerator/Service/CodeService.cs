@@ -19,10 +19,12 @@ namespace wojilu.Coder.Service {
         private string viewPath;
         private string controllerPath;
 
-        public ICrudViewTemplate crudViewTemplate { get; set; }
+        public IViewTemplate viewTemplate { get; set; }
+        public IControllerTemplate controllerTemplate { get; set; }
 
         public CodeService( ) {
-            this.crudViewTemplate = new CrudViewTemplate();
+            this.viewTemplate = new ViewNormal();
+            this.controllerTemplate = new ControllerTemplate();
         }
 
         public ICodeService Init( string codePath, string nsName ) {
@@ -100,7 +102,7 @@ namespace wojilu.Coder.Service {
             string codeDel = this.getDeleteCode( ei );
 
             Template template = new Template();
-            template.InitContent( CrudActionTemplate.GetController() );
+            template.InitContent( controllerTemplate.GetController() );
 
             template.Set( "domainNamespace", domainNamespace );
             template.Set( "namespace", this.namespaceName );
@@ -122,7 +124,7 @@ namespace wojilu.Coder.Service {
 
         private string getAddCode( EntityInfo ei ) {
             Template template = new Template();
-            template.InitContent( CrudActionTemplate.GetAddAction() );
+            template.InitContent( controllerTemplate.GetAddAction() );
             IBlock block = template.GetBlock( "editor" );
             String eiName = strUtil.GetCamelCase( ei.Name );
 
@@ -148,21 +150,21 @@ namespace wojilu.Coder.Service {
 
         private string getCreateCode( EntityInfo ei ) {
             Template t = new Template();
-            t.InitContent( CrudActionTemplate.GetCreateAction() );
+            t.InitContent( controllerTemplate.GetCreateAction() );
             this.populateTemplate( ei, t );
             return t.ToString();
         }
 
         private string getDeleteCode( EntityInfo ei ) {
             Template template = new Template();
-            template.InitContent( CrudActionTemplate.GetDeleteAction() );
+            template.InitContent( controllerTemplate.GetDeleteAction() );
             template.Set( "m.Name", ei.Name );
             return template.ToString();
         }
 
         private string getEditCode( EntityInfo ei ) {
             Template template = new Template();
-            template.InitContent( CrudActionTemplate.GetEditAction() );
+            template.InitContent( controllerTemplate.GetEditAction() );
             template.Set( "m.Name", ei.Name );
 
             String eiName = strUtil.GetCamelCase( ei.Name );
@@ -189,7 +191,7 @@ namespace wojilu.Coder.Service {
 
         private string getListCode( EntityInfo ei ) {
             Template template = new Template();
-            template.InitContent( CrudActionTemplate.GetListAction() );
+            template.InitContent( controllerTemplate.GetListAction() );
             template.Set( "model.Name", ei.Name );
             template.Set( "model.LName", strUtil.GetCamelCase( ei.Name ) );
             return template.ToString();
@@ -197,7 +199,7 @@ namespace wojilu.Coder.Service {
 
         private string getUpdateCode( EntityInfo ei ) {
             Template t = new Template();
-            t.InitContent( CrudActionTemplate.GetUpdateAction() );
+            t.InitContent( controllerTemplate.GetUpdateAction() );
             this.populateTemplate( ei, t );
             return t.ToString();
         }
@@ -288,7 +290,7 @@ namespace wojilu.Coder.Service {
 
         private void makeView_Action_List( string modelControllerDir, EntityInfo ei ) {
             Template template = new Template();
-            template.InitContent( crudViewTemplate.GetListView() );
+            template.InitContent( viewTemplate.GetListView() );
             template.Set( "m.Name", ei.Label );
             IBlock block = template.GetBlock( "header" );
             IBlock block2 = template.GetBlock( "row" );
@@ -305,7 +307,7 @@ namespace wojilu.Coder.Service {
         private string getEditPage( EntityInfo ei, bool isEdit ) {
 
             Template template = new Template();
-            template.InitContent( crudViewTemplate.GetAddView() );
+            template.InitContent( viewTemplate.GetAddView() );
             template.Set( "mName", ei.Label );
 
             IBlock block = template.GetBlock( "list" );
@@ -400,7 +402,7 @@ namespace wojilu.Coder.Service {
 
         private void makeLayoutController() {
             Template template = new Template();
-            template.InitContent( LayoutTemplate.GetAdminLayoutAction() );
+            template.InitContent( controllerTemplate.GetLayoutController() );
 
             IBlock block = template.GetBlock( "list" );
             foreach (DictionaryEntry entry in MappingClass.Instance.ClassList) {
@@ -418,7 +420,7 @@ namespace wojilu.Coder.Service {
 
         private void makeLayoutView() {
             Template template = new Template();
-            template.InitContent( LayoutTemplate.GetAdminLayoutView() );
+            template.InitContent( viewTemplate.GetLayoutView() );
 
             IBlock block = template.GetBlock( "list" );
             foreach (DictionaryEntry entry in MappingClass.Instance.ClassList) {

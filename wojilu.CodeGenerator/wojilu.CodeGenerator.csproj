@@ -42,12 +42,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\CodeService.cs" />
     <Compile Include="Service\Interface\ICodeService.cs" />
-    <Compile Include="Service\TemplatesBase\CrudActionTemplate.cs" />
-    <Compile Include="Service\TemplatesBase\CrudViewTemplate.cs" />
-    <Compile Include="Service\Interface\ICrudViewTemplate.cs" />
-    <Compile Include="Service\TemplatesBase\LayoutTemplate.cs" />
-    <Compile Include="Service\TemplatesBase\MakeCodeTemplate.cs" />
-    <Compile Include="Service\TemplatesBoostrap\CrudViewBootstrapTemplate.cs" />
+    <Compile Include="Service\Template\ControllerTemplate.cs" />
+    <Compile Include="Service\Interface\IControllerTemplate.cs" />
+    <Compile Include="Service\Template\ViewNormal.cs" />
+    <Compile Include="Service\Interface\IViewTemplate.cs" />
+    <Compile Include="Views\ViewHelper.cs" />
+    <Compile Include="Service\Template\ViewBootstrap.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

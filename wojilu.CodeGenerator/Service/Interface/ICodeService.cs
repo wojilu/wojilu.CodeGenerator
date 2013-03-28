@@ -4,7 +4,7 @@ namespace wojilu.Coder.Service {
 
     public interface ICodeService {
 
-        ICrudViewTemplate crudViewTemplate { get; set; }
+        IViewTemplate viewTemplate { get; set; }
 
         ICodeService Init( string codePath, string nsName );
         void Make();

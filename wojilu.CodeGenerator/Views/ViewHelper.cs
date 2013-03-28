@@ -4,7 +4,7 @@ using System.Text;
 
 namespace wojilu.Coder.Service {
 
-    public class MakeCodeTemplate {
+    public class ViewHelper {
 
         public static string GetLayoutView() {
             return @"

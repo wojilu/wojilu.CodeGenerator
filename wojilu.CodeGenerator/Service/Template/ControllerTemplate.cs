@@ -2,9 +2,34 @@
 
 namespace wojilu.Coder.Service {
 
-    public class CrudActionTemplate {
+    public class ControllerTemplate : IControllerTemplate {
 
-        public static string GetController() {
+
+        public string GetLayoutController() {
+
+            return @"
+using System;
+using System.Collections.Generic;
+using System.Text;
+using wojilu.Web.Mvc;
+
+namespace wojilu.Web.Controller.Admin {
+
+    public class LayoutController : ControllerBase {
+
+        public override void Layout() {
+
+            <!-- BEGIN list -->
+            set( ""#{lmName}.AdminLink"", to( new Admin.#{mName}Controller().List ) );<!-- END list -->
+
+        }
+    }
+}
+";
+        }
+
+
+        public string GetController() {
             return @"using System;
 using System.Text;
 using System.Collections;
@@ -49,14 +74,15 @@ namespace #{namespace} {
 }";
         }
 
-        public static string GetAddAction() {
+
+        public string GetAddAction() {
             return @"target( Create );
 #{entityProperty}
             <!-- BEGIN editor -->editorFull( ""#{Name}"", """", ""350px"" );
             <!-- END editor -->";
         }
 
-        public static string GetEditAction() {
+        public string GetEditAction() {
             return @"
             target( Update, id );
 
@@ -72,7 +98,7 @@ namespace #{namespace} {
         }
 
 
-        public static string GetCreateAction() {
+        public string GetCreateAction() {
             return @"
             #{m.Name} data = ctx.PostObject<#{m.Name}>( ""x"" );
             if (ctx.HasErrors) {
@@ -84,7 +110,7 @@ namespace #{namespace} {
             redirect( List );";
         }
 
-        public static string GetUpdateAction() {
+        public string GetUpdateAction() {
             return @"
             #{m.Name} data = #{m.Name}.findById( id );
             if (data == null) {
@@ -102,7 +128,7 @@ namespace #{namespace} {
             redirect( List );";
         }
 
-        public static string GetDeleteAction() {
+        public string GetDeleteAction() {
             return @"
             #{m.Name} data = #{m.Name}.findById( id );
             if (data == null) {
@@ -115,7 +141,7 @@ namespace #{namespace} {
         }
 
 
-        public static string GetListAction() {
+        public string GetListAction() {
             return @"
             set( ""addLink"", to( Add ) );
 
