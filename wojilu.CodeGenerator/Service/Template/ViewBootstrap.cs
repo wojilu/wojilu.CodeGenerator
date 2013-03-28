@@ -10,18 +10,9 @@ namespace wojilu.Coder.Service {
 <html xmlns=""http://www.w3.org/1999/xhtml"" >
 <head>
     <title>文章管理</title>
-    <link href=""~css/wojilu._common.css?v=#{cssVersion}"" rel=""stylesheet"" type=""text/css"" />
-    <link href=""~css/wojilu._admin.css?v=#{cssVersion}"" rel=""stylesheet"" type=""text/css"" />
-    <link href=""~css/wojilu.site.admin.css?v=#{cssVersion}"" rel=""stylesheet"" type=""text/css"" />
-<script>var __funcList = []; var _run = function (aFunc) { __funcList.push(aFunc); }; var require = { urlArgs: 'v=#{jsVersion}' };</script>
-    
-<script  type=""text/javascript"">
-    _run(function () {
-        var topNavHeight = $('#headerContainer').height();
-        $('.adminContainer').height($(window).height() - topNavHeight - 2);
-    });
-</script>
-    
+<link href=""~css/bootstrap/css/bootstrap.css?v=#{cssVersion}"" rel=""stylesheet"" />
+<link href=""~css/wojilu._base.css?v=#{cssVersion}"" rel=""stylesheet"" />
+<script>var __funcList = []; var _run = function (aFunc) { __funcList.push(aFunc); }; var require = { urlArgs: 'v=#{jsVersion}' };</script>   
 </head>
 <body>
 
@@ -68,7 +59,6 @@ namespace wojilu.Coder.Service {
 
         public string GetAddView() {
             return @"
-<div>bootstrap</div>
         <div class=""formPanel"">
         <form method=""post"" action=""#{ActionLink}"" class=""ajaxPostForm"">
 	        <table style=""width:100%;"">
@@ -79,7 +69,7 @@ namespace wojilu.Coder.Service {
 		        </tr>
                 <!-- END list -->
 		        <tr>
-			        <td>&nbsp;</td><td><input type=""submit"" class=""btn"" value=""添加数据"" /> <input type=""button"" class=""btnReturn"" value=""返回"" /></td>
+			        <td>&nbsp;</td><td><input type=""submit"" class=""btn btn-primary"" value=""添加数据"" /> <input type=""button"" class=""btn btnReturn"" value=""返回"" /></td>
 		        </tr>
 	        </table>
         </form>
@@ -92,14 +82,18 @@ namespace wojilu.Coder.Service {
             return @"
 
 
-<table cellspacing=""1"" cellpadding=""3""  class=""dataAdminList"" id=""dataAdminList"">
-    <tr class=""adminBar""><td colspan=""#{columnCount}""><div><a href=""#{addLink}""><img src=""~img/add.gif""/> 添加#{m.Name}</a></div></td></tr>
+<table class=""table dataAdminList"" id=""dataAdminList"">
+    <thead>
+    <tr class=""adminBar""><td colspan=""#{columnCount}"">
+<div><a href=""#{addLink}"" class=""btn btn-primary""><i class=""icon-plus icon-white""></i> 添加#{m.Name}</a></div>
+</td></tr>
 	<tr class=""tableHeader"">
         <th>编号</th>
         <!-- BEGIN header -->
 		<th>#{p.Name}</th><!-- END header -->
 		<th>管理</th>
 	</tr>
+    </thead>
     #{loopBegin}
 	<tr class=""tableItems"">
         <td>#{x.Id}&nbsp;</td>
