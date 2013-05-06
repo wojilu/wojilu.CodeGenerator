@@ -181,7 +181,7 @@ namespace wojilu.Coder.Service {
                 else if (ep.IsEntity) {
                     String epName = getEntityNameSimple( ep );
                     if (epName != null) {
-                        entityProperty += string.Format( tab3 + "dropList( \"x.{0}\", {1}.findAll(), \"{2}=Id\", data.{1}.Id );" + Environment.NewLine, ep.Name, ep.EntityInfo.Name, epName );
+                        entityProperty += string.Format( tab3 + "dropList( \"x.{0}\", {1}.findAll(), \"{2}=Id\", data.{3}.Id );" + Environment.NewLine, ep.Name, ep.EntityInfo.Name, epName, ep.Name );
                     }
                 }
             }
