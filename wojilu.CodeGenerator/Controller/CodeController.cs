@@ -216,8 +216,9 @@ namespace wojilu.Web.Controller {
 
                     if (rft.GetAttribute( propertyInfo.Property, typeof( HtmlTextAttribute ) ) != null) {
 
-                        control = Editor.NewOne( propertyInfo.Name, "", "200px", editorJsPath, MvcConfig.Instance.JsVersion, Editor.ToolbarType.Full ).ToString();
-                    }
+                  
+                        control = EditorFactory.NewOne(propertyInfo.Name, "", "200px", Editor.ToolbarType.Basic).ToString();
+                     }
                     else {
 
                         control = "<div>" + Html.TextArea( propertyInfo.Name, "", "width:98%; height:80px;" ) + "</div>";
@@ -316,8 +317,8 @@ namespace wojilu.Web.Controller {
                 string control = Html.TextInput( pInfo.Name, str, style );
                 if (pInfo.IsLongText) {
                     if (rft.GetAttribute( pInfo.Property, typeof( HtmlTextAttribute ) ) != null) {
-                        control = Editor.NewOne( pInfo.Name, str, "200px", editorJsPath, MvcConfig.Instance.JsVersion, Editor.ToolbarType.Full ).ToString();
-                    }
+                   control = EditorFactory.NewOne(pInfo.Name, str, "200px", Editor.ToolbarType.Basic).ToString();
+                   }
                     else {
                         control = "<div>" + Html.TextArea( pInfo.Name, str, "width:98%; height:80px;" ) + "</div>";
                     }
