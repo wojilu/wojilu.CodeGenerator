@@ -60,8 +60,8 @@ namespace wojilu.Web.Controller {
 
         private List<String> getOrderedKeys() {
             List<String> keys = new List<string>();
-            foreach (DictionaryEntry entry in MappingClass.Instance.ClassList) {
-                keys.Add( entry.Key.ToString() );
+            foreach (KeyValuePair<String, EntityInfo> kv in MappingClass.Instance.ClassList) {
+                keys.Add( kv.Key );
             }
             keys.Sort();
             return keys;
@@ -216,7 +216,17 @@ namespace wojilu.Web.Controller {
 
                     if (rft.GetAttribute( propertyInfo.Property, typeof( HtmlTextAttribute ) ) != null) {
 
-                        control = Editor.NewOne( propertyInfo.Name, "", "200px", editorJsPath, MvcConfig.Instance.JsVersion, Editor.ToolbarType.Full ).ToString();
+                        //control = Editor.NewOne( propertyInfo.Name, "", "200px", editorJsPath, MvcConfig.Instance.JsVersion, Editor.ToolbarType.Full ).ToString();
+
+                        String itemName = propertyInfo.Name;
+
+                        control = @"<script type=""text/plain"" id=""" + itemName + @""" name=""" + itemName + @"""></script>
+<script>
+_run(function () { 
+    wojilu.editor.bind('" + itemName + @"').height(220).line(2).show();
+});
+</script>
+";
                     }
                     else {
 
@@ -316,7 +326,15 @@ namespace wojilu.Web.Controller {
                 string control = Html.TextInput( pInfo.Name, str, style );
                 if (pInfo.IsLongText) {
                     if (rft.GetAttribute( pInfo.Property, typeof( HtmlTextAttribute ) ) != null) {
-                        control = Editor.NewOne( pInfo.Name, str, "200px", editorJsPath, MvcConfig.Instance.JsVersion, Editor.ToolbarType.Full ).ToString();
+
+                        String itemName = pInfo.Name;
+                        control = @"<script type=""text/plain"" id=""" + itemName + @""" name=""" + itemName + @""">" + str + @"</script>
+<script>
+_run(function () { 
+    wojilu.editor.bind('" + itemName + @"').height(220).line(2).show();
+});
+</script>
+";
                     }
                     else {
                         control = "<div>" + Html.TextArea( pInfo.Name, str, "width:98%; height:80px;" ) + "</div>";

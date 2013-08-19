@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
@@ -22,7 +23,7 @@ namespace wojilu.Coder.Service {
         public IViewTemplate viewTemplate { get; set; }
         public IControllerTemplate controllerTemplate { get; set; }
 
-        public CodeService( ) {
+        public CodeService() {
             this.viewTemplate = new ViewNormal();
             this.controllerTemplate = new ControllerTemplate();
         }
@@ -82,8 +83,8 @@ namespace wojilu.Coder.Service {
         //---------------------controller---------------------------------------------------
 
         private void makeAllController() {
-            foreach (DictionaryEntry entry in MappingClass.Instance.ClassList) {
-                EntityInfo ei = entry.Value as EntityInfo;
+            foreach (KeyValuePair<String, EntityInfo> kv in MappingClass.Instance.ClassList) {
+                EntityInfo ei = kv.Value;
                 this.makeOneController( ei );
             }
         }
@@ -261,8 +262,8 @@ namespace wojilu.Coder.Service {
         //-----------------------view----------------------------------------------
 
         private void makeAllView() {
-            foreach (DictionaryEntry entry in MappingClass.Instance.ClassList) {
-                EntityInfo ei = entry.Value as EntityInfo;
+            foreach (KeyValuePair<String, EntityInfo> kv in MappingClass.Instance.ClassList) {
+                EntityInfo ei = kv.Value;
                 this.makeActionViews( ei );
             }
         }
@@ -405,9 +406,9 @@ namespace wojilu.Coder.Service {
             template.InitContent( controllerTemplate.GetLayoutController() );
 
             IBlock block = template.GetBlock( "list" );
-            foreach (DictionaryEntry entry in MappingClass.Instance.ClassList) {
+            foreach (KeyValuePair<String, EntityInfo> kv in MappingClass.Instance.ClassList) {
 
-                EntityInfo ei = entry.Value as EntityInfo;
+                EntityInfo ei = kv.Value;
                 String lmName = strUtil.GetCamelCase( ei.Name );
 
                 block.Set( "mName", ei.Name );
@@ -423,9 +424,9 @@ namespace wojilu.Coder.Service {
             template.InitContent( viewTemplate.GetLayoutView() );
 
             IBlock block = template.GetBlock( "list" );
-            foreach (DictionaryEntry entry in MappingClass.Instance.ClassList) {
+            foreach (KeyValuePair<String, EntityInfo> kv in MappingClass.Instance.ClassList) {
 
-                EntityInfo ei = entry.Value as EntityInfo;
+                EntityInfo ei = kv.Value as EntityInfo;
                 String lmName = strUtil.GetCamelCase( ei.Name );
 
                 block.Set( "m.Name", ei.Label );
