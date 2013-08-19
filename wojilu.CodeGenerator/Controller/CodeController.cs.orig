@@ -216,6 +216,7 @@ namespace wojilu.Web.Controller {
 
                     if (rft.GetAttribute( propertyInfo.Property, typeof( HtmlTextAttribute ) ) != null) {
 
+<<<<<<< HEAD
                         //control = Editor.NewOne( propertyInfo.Name, "", "200px", editorJsPath, MvcConfig.Instance.JsVersion, Editor.ToolbarType.Full ).ToString();
 
                         String itemName = propertyInfo.Name;
@@ -227,7 +228,12 @@ _run(function () {
 });
 </script>
 ";
+                    }
+=======
+                  
+                        control = EditorFactory.NewOne(propertyInfo.Name, "", "200px", Editor.ToolbarType.Basic).ToString();
                      }
+>>>>>>> fbdef0e388a8e3acf998ebd52665863cc7023522
                     else {
 
                         control = "<div>" + Html.TextArea( propertyInfo.Name, "", "width:98%; height:80px;" ) + "</div>";
@@ -326,6 +332,7 @@ _run(function () {
                 string control = Html.TextInput( pInfo.Name, str, style );
                 if (pInfo.IsLongText) {
                     if (rft.GetAttribute( pInfo.Property, typeof( HtmlTextAttribute ) ) != null) {
+<<<<<<< HEAD
 
                         String itemName = pInfo.Name;
                         control = @"<script type=""text/plain"" id=""" + itemName + @""" name=""" + itemName + @""">" + str + @"</script>
@@ -335,7 +342,11 @@ _run(function () {
 });
 </script>
 ";
+                    }
+=======
+                   control = EditorFactory.NewOne(pInfo.Name, str, "200px", Editor.ToolbarType.Basic).ToString();
                    }
+>>>>>>> fbdef0e388a8e3acf998ebd52665863cc7023522
                     else {
                         control = "<div>" + Html.TextArea( pInfo.Name, str, "width:98%; height:80px;" ) + "</div>";
                     }
